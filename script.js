@@ -27,9 +27,17 @@ function createGrid() {
 
             square.style.width = `${size}px`;
             square.style.height = `${size}px`;
+            square.style.backgroundColor = "#FFF";
+            square.style.opacity = 0;
 
             square.addEventListener("mouseenter", (e) => {
-                e.target.style.backgroundColor = "#000";
+                if (e.target.style.opacity == 0) {
+                    e.target.style.backgroundColor = random_rgba();
+                    e.target.style.opacity = 0.1;
+                } else {
+                    e.target.style.opacity = parseFloat(e.target.style.opacity) + 0.1;
+                }
+
             });
             row.appendChild(square);
         }
@@ -37,6 +45,11 @@ function createGrid() {
         container.appendChild(row);
 
     }
+}
+
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + 1 + ')';
 }
 
 createGrid();
