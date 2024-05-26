@@ -16,6 +16,10 @@ for (let index = 0; index < SQUARES_PER_SIDE; index++) {
 
         square.style.width = `${size}px`;
         square.style.height = `${size}px`;
+
+        square.addEventListener("mouseenter", (e) => {
+            e.target.style.backgroundColor = "#000";
+        })
         row.appendChild(square);
     }
 
